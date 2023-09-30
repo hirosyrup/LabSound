@@ -17,6 +17,7 @@ file(GLOB labsnd_core       "${LABSOUND_ROOT}/src/core/*")
 file(GLOB labsnd_extended   "${LABSOUND_ROOT}/src/extended/*")
 file(GLOB labsnd_int_h      "${LABSOUND_ROOT}/src/internal/*")
 file(GLOB labsnd_int_src    "${LABSOUND_ROOT}/src/internal/src/*")
+file(GLOB soundtouch_src    "${LABSOUND_ROOT}/soundtouch/source/SoundTouch/*")
 
 # backend selection
 
@@ -95,6 +96,7 @@ add_library(LabSound STATIC
     ${labsnd_backend}
     ${labsnd_fft_src}
     ${ooura_src}
+    ${soundtouch_src}
  )
 
 if (APPLE)
@@ -178,6 +180,9 @@ if (LABSOUND_USE_MINIAUDIO)
         ${LABSOUND_ROOT}/third_party/miniaudio)
 endif()
 
+set(soundtouch_src "${LABSOUND_ROOT}/soundtouch/source/SoundTouch/SoundTouch.cpp")
+include_directories(${LABSOUND_ROOT}/soundtouch/include)
+add_subdirectory(soundtouch)
 
 if (MSVC_IDE)
     # hack to get around the "Debug" and "Release" directories cmake tries to add on Windows

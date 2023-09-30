@@ -48,3 +48,6 @@ endif()
 
 add_definitions(${_LAB_CXX_DEFINITIONS})
 set(CMAKE_CXX_FLAGS "${_LAB_CXX_FLAGS} ${CMAKE_CXX_FLAGS}")
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/soundtouch/include)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/soundtouch/lib)
